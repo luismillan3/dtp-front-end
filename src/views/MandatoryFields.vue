@@ -177,17 +177,17 @@ export default {
       },
       next(){
 
-      let result=[];
+      let result={};
 
 
       for(let item of this.itemsAuthor){
-          result.push({data:'Author',tag:item.tag,value:item.value})
+          result['Author' + item.tag] = item.value;
       }
       for(let item of this.itemsClass){
-          result.push({data:'Class',tag:item.tag,value:item.value})
+           result['Class' + item.tag] = item.value;
       }
       for(let item of this.itemsTitle){
-          result.push({data:'Title',tag:item.tag,value:item.value})
+           result['Title' + item.tag] = item.value;
       }
       
           console.log(result);

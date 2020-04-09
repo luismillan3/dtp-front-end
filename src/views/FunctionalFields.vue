@@ -92,7 +92,14 @@ export default {
           this.items.splice(index,1);
       },
       save(){
-          console.log(this.items);
+          let result = {};
+          let i = 1;
+
+            for(let item of this.items){
+                result[item.tag + i++ + ''] = item.value
+            }
+
+          console.log(result);
       }
   },
 };

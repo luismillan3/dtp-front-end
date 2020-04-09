@@ -32,7 +32,7 @@
         uploadedFiles: [],
         uploadError: null,
         currentStatus: null,
-        uploadFieldName: 'photos'
+        uploadFieldName: 'filetoupload'
       }
     },
     computed: {
