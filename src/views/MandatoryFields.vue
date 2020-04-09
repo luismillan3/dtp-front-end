@@ -74,6 +74,8 @@
 <script>
 // @ is an alias to /src
 
+import axios from 'axios'
+
 export default {
   name: "UploadPage",
   data() {
@@ -179,18 +181,30 @@ export default {
 
       let result={};
 
-
-      for(let item of this.itemsAuthor){
-          result['Author' + item.tag] = item.value;
-      }
-      for(let item of this.itemsClass){
-           result['Class' + item.tag] = item.value;
-      }
-      for(let item of this.itemsTitle){
-           result['Title' + item.tag] = item.value;
-      }
+            for(let item of this.itemsAuthor){
+                result['Author' + item.tag] = item.value;
+            }
+            for(let item of this.itemsClass){
+                result['Class' + item.tag] = item.value;
+            }
+            for(let item of this.itemsTitle){
+                result['Title' + item.tag] = item.value;
+            }
       
+           this.postToApi(result);
           console.log(result);
+
+          
+      },
+
+      postToApi(body){
+        axios.post('http://localhost:3000/document/tag/?name='+'Test.docx',body)
+          .then((response) => {
+            console.log(response);
+          })
+         .catch((err) => {
+             console.log(err)
+         })
       }
   }
 };

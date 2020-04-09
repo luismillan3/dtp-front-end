@@ -11,11 +11,14 @@ let request = axios.create({
 });
 
 function upload(formData) {
-    const url = `${BASE_URL}/document/fileupload`;
-    let test = 'http://localhost:3000/document/fileupload';
+    const url = `${BASE_URL}/documents/fileupload`;
+    let test = 'http://localhost:3000/document/upload';
     return request.post(test, formData)
         // get data
         .then(x => x.data)
+        .then(response =>{
+            Vue.$router.push('/mandatory');
+        })
         // add url field
 
         // .then(x => x.map(img => Object.assign({},

@@ -6,10 +6,14 @@
       <v-col>
         <v-card>
           <v-card-title>
-            Functional Fields
+            Functional Fields <v-spacer></v-spacer> <v-btn class="success" @click="addFunctionField">Add</v-btn>
           </v-card-title>
           <v-card-text>
             <v-data-table :headers="headers" :items="items">
+                <template v-slot:item.tag="{ item }" class="mt-2">
+                <v-select class="mt-2" v-model="item.tag" :item-text="item.tag" :item-value="item.tag" :items="catalog"></v-select>
+              </template>
+
               <template v-slot:item.functionalTag="{ item }" class="mt-2">
                 <v-select class="mt-2" v-model="item.functionalTag" :item-text="item.functionalTag" :item-value="item.functionalTag" :items="catalog"></v-select>
               </template>
@@ -100,6 +104,9 @@ export default {
             }
 
           console.log(result);
+      },
+      addFunctionField(){
+          this.items.push({tag:'',functionalTag:'',value:''})
       }
   },
 };
